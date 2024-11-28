@@ -1,0 +1,39 @@
+{
+	"name": "___This_is_the_name",
+	"kind": "___This_is_the_kind",
+	"battle_state": {
+		"healthPoint": 0,
+		"attack": 0
+	},
+	"basic_state":{
+		"experience": 0.0,
+		"level": 0,
+		"starve": 0.0
+	},
+	"tame": {
+		"diet":{
+			"prefer": [
+				"___prefer_food_a",
+				"___prefer_food_b",
+				"___prefer_food_c"
+			],
+			"hate": [
+				"___hate_food_a",
+				"___hate_food_b",
+				"___hate_food_c"
+			]
+		},
+		"habitat": {
+			"prefer": [
+				"___prefer_habitat_a",
+				"___prefer_habitat_b",
+				"___prefer_habitat_c"
+			],
+			"hate": [
+				"___hate_habitat_a",
+				"___hate_habitat_b",
+				"___hate_habitat_c"
+			]
+		}
+	}
+}

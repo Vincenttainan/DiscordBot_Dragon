@@ -1,0 +1,68 @@
+{
+	"Dragon_Species": {
+		"objective_description": {
+			"species_ecology": {
+				"living_environment": [
+					"amphibious",
+					"aquatic",
+					"terrestrial"
+				],
+				"ecological_behavior": [
+					"solitary",
+					"gregarious"
+				],
+				"living_behavior": [
+					"migratory",
+					"settlement"
+				],
+				"feeding_behavior":[
+					"scavenger",
+					"predatory"
+				],
+				"behavioral_patterns": [
+					"nocturnal",
+					"diurnal"
+				]
+			},
+			"behavior_traits": {
+		        "temperament": [
+		            "aggressive",
+		            "neutral",
+		            "docile"
+		        ],
+		        "intelligence": [
+		            "low",
+		            "average",
+		            "high"
+		        ]
+		    },
+		    "physical_traits": {
+		        "size": [
+		            "small",
+		            "medium",
+		            "large"
+		        ],
+		        "wings": [
+		            "winged",
+		            "fined",
+		            "wingless"
+		        ],
+		        "breath_weapon": [
+		            "fire",
+		            "lightning",
+		            "poison"
+		        ]
+		    }
+		},
+		"subjective_view": {
+			"description": "wwwwwwwwwwwwwwwwwwwww",
+			"danger": [
+				"hide yourself and pray",
+				"high",
+				"medium",
+				"low",
+				"harmless"
+			]
+		}
+	}
+}
