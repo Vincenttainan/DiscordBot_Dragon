@@ -1,2 +1,6 @@
-# DiscordBot_Dragon
-CSTP
+# DiscordBot_Dragon  
+
+This project is for CSTP in NCU  
+
+What is CSTP?  
+~~A useless SXXT~~
