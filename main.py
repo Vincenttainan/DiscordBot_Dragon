@@ -1,0 +1,152 @@
+import discord
+import myRand
+from discord.ext import commands
+from enum import Enum
+
+#========================================================================================================================================================================================================#
+
+BotToken = ""
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix = "!030 ", intents = intents)
+
+#========================================================================================================================================================================================================#
+
+@bot.event
+async def on_ready():
+    await bot.tree.sync()
+    print(f"now signed in with --> {bot.user}")
+
+#========================================================================================================================================================================================================#
+
+@bot.tree.command(name = "sleep", description = "Shut down!!!")
+async def hello(ctx):
+    await ctx.response.send_message("Sleeping~")
+    await bot.close()
+
+#========================================================================================================================================================================================================#
+
+class harvest_options(Enum):
+    mine = 1
+    wood = 2
+    farm = 3
+    fish = 4
+
+red = 0xff0000
+blue = 0x0000ff
+green = 0x00ff00
+
+photos = {
+    # all of the photos are needed to be redrawed with the size of 320 x 320 (pixels) (or maybe 16 x 16 blocks)
+    "coal" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/58/Coal_JE4_BE3.png/revision/latest/thumbnail/width/360/height/360?cb=20230625214010",
+    "gold" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/8a/Gold_Ingot_JE4_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20200224211607",
+    "crystal" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/61/Amethyst_Shard_JE2_BE1.png/revision/latest/thumbnail/width/360/height/360?cb=20201111173100",
+    "branch" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7a/Stick_JE1_BE1.png/revision/latest/thumbnail/width/360/height/360?cb=20200128023441",
+    "bark" : "https://minecraft.wiki/images/Oak_Log_%28UD%29_JE5_BE3.png?8a080",
+    "resin" : "https://minecraft.wiki/images/Resin_Clump_%28item%29_JE1_BE1.png?123f8",
+    "beef" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/0f/Raw_Beef_JE4_BE3.png/revision/latest/thumbnail/width/360/height/360?cb=20190504054851",
+    "lamb" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f3/Raw_Mutton_JE3_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20190504055753",
+    "lizard" : "https://static.wikia.nocookie.net/atmosmobs/images/b/bf/Lizard3.png/revision/latest?cb=20121128105731",
+    "salmon" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/75/Raw_Salmon_JE2_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20191230044441",
+    "cod" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/ef/Raw_Cod_JE4_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20190403183136",
+    "pufferfish" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/02/Pufferfish_%28item%29_JE5_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20191230044451"
+
+}
+
+@bot.tree.command(name = "harvest", description = "Collecting supplies.")
+async def harvest(ctx, options:harvest_options):
+    _rand = myRand.get_rand(1, 100)
+    if options.name == "mine":
+        embed = discord.Embed(
+            title="Mining", 
+            color=green
+        )
+
+        if _rand <= 50:
+            cnt = myRand.get_rand(3, 5)
+            embed.set_thumbnail(url=photos["coal"])
+            embed.add_field(name="", value="After a long long mining\nYou finally found a pile of coal\nYou obtain `"+str(cnt)+"` lumps of `coal`", inline=False)
+        elif _rand <= 90:
+            cnt = myRand.get_rand(2, 3)
+            embed.set_thumbnail(url=photos["gold"])
+            embed.add_field(name="", value="You accidentally dug into a dragon nest\nBut lucky, the owner wasn't there\nYou grabbed `"+str(cnt)+"` ingots of `gold` and ran away", inline=False)
+        else:
+            cnt = myRand.get_rand(1, 3)
+            embed.set_thumbnail(url=photos["crystal"])
+            embed.add_field(name="", value="You fell into a canyon unexpectedly\nYou felt wet in pants while a stalagmite almost penetrate you\nYou found `"+str(cnt)+"` blocks of `crystal` beside the stalagmite", inline=False)
+
+        await ctx.response.send_message(embed=embed)
+
+    elif options.name == "wood":
+        embed = discord.Embed(
+            title="Wooding", 
+            color=green
+        )
+
+        if _rand <= 50:
+            cnt = myRand.get_rand(3, 5)
+            embed.set_thumbnail(url=photos["branch"])
+            embed.add_field(name="", value="After a long search through the woods\nYou finally found a robust tree\nSawing off the trunk and received `"+str(cnt)+"` branchs of `branch`", inline=False)
+        elif _rand <= 90:
+            cnt = myRand.get_rand(2, 3)
+            embed.set_thumbnail(url=photos["bark"])
+            embed.add_field(name="", value="Walking for a whole morning gained for nothing\nYou cut off some tree barks so as not to gain nothing\nYou leave depressedly with `"+str(cnt)+"` piles of `bark`", inline=False)
+        else:
+            cnt = myRand.get_rand(1, 3)
+            embed.set_thumbnail(url=photos["resin"])
+            embed.add_field(name="", value="Seeing a massive sacred tree, you ran toward it\nFinding too huge to cut off\nBottled the liquid it dropped and gained `"+str(cnt)+"` glasses of `resin`", inline=False)
+
+        await ctx.response.send_message(embed=embed)
+
+    elif options.name == "farm":
+        embed = discord.Embed(
+            title="Farming", 
+            color=green
+        )
+
+        if _rand <= 40:
+            cnt = myRand.get_rand(4, 6)
+            embed.set_thumbnail(url=photos["beef"])
+            embed.add_field(name="", value="Driving cattle to graze for the whole day\nDiscovered a seriously injured ox lying beside a river\nYou ended his suffering and cut of `"+str(cnt)+"` cubes if `beef`", inline=False)
+        elif _rand <= 80:
+            cnt = myRand.get_rand(2, 3)
+            embed.set_thumbnail(url=photos["lamb"])
+            embed.add_field(name="", value="Baa Baa Baa\nYou found a flock of sheep\nAnd obtain `"+str(cnt)+"` cubes of `lamb`", inline=False)
+        else:
+            cnt = 1
+            embed.set_thumbnail(url=photos["lizard"])
+            embed.add_field(name="", value="A flash before your eyes\nYou chased the sudden moving for a period\nAnd found `"+str(cnt)+"` `lizard` hiding itself under a rock", inline=False)
+
+        await ctx.response.send_message(embed=embed)
+
+    elif options.name == "fish":
+        embed = discord.Embed(
+            title="Fishing", 
+            color=green
+        )
+
+        if _rand <= 40:
+            cnt = myRand.get_rand(4, 6)
+            embed.set_thumbnail(url=photos["salmon"])
+            embed.add_field(name="", value="Casting your line into a rapid stream, you feel a strong tug\nAfter a fierce struggle, you pull up a sleek salmon\nYou caught `"+str(cnt)+"` `salmon`", inline=False)
+        elif _rand <= 80:
+            cnt = myRand.get_rand(2, 3)
+            embed.set_thumbnail(url=photos["cod"])
+            embed.add_field(name="", value="Riding the wind and waves\nYou spot a school of cod gliding through the deep waters\nWith some patience, you manage to catch `"+str(cnt)+"` big fat `cod`", inline=False)
+        else:
+            cnt = 1
+            embed.set_thumbnail(url=photos["pufferfish"])
+            embed.add_field(name="", value="After a long wait, you reel in a pufferfish\nIts bloated form and venomous spines make it a risky catch\nYou secure `"+str(cnt)+"` spiky `pufferfish`", inline=False)
+
+        await ctx.response.send_message(embed=embed)
+
+
+
+
+
+
+
+
+
+
+
+bot.run(BotToken)
