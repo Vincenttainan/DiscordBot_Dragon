@@ -1,26 +1,64 @@
 import json
 import os
 
-path = "/Users/vincenttainan/Desktop/pythonCSTP"
-os.chdir(path)
+#========================================================================================================================================================================================================#
+
+curr_path = "/Users/vincenttainan/Desktop/pythonCSTP"
+ex_path = "./jsons/ex_player.json"
+resource_path = "./resource/player.json"
+os.chdir(curr_path)
 # Since the abs path is greater the 3 layers, path should be written down
 
+#========================================================================================================================================================================================================#
+
 def merge(json1, json2):
-    # throwing json2 into json1
-    # json1, json2 should both be dictionary
-    json1.update(json2)
+	# throwing {json2} into {json1}
+	# json1, json2 should both be dictionary
+	json1.update(json2)
+
+#========================================================================================================================================================================================================#
 
 def new_player(user_id):
-    # adding a new player into resource
-    # user_id should be a string
-    with open('./jsons/ex_player.json', 'r') as file:
-        data=file.read()
-        rfile=json.loads(data)
+	# adding a new player into resource
+	# user_id should be a string
+	with open(ex_path, 'r') as file:
+		data=file.read()
+		rfile=json.loads(data)
 
-    rfile[user_id] = rfile.pop("IDwwwwwwwwwwwwwwwwwwID")
+	rfile[user_id] = rfile.pop("IDwwwwwwwwwwwwwwwwwwID")
 
-    with open('./resource/player.json', 'w+') as file:
-        old_data=file.read()
-        old_file=json.loads(data)
-        merge(rfile,old_file)
-        json.dump(rfile, file, indent=4)
+	with open(resource_path, 'r+') as file:
+		old_data=file.read()
+		old_file=json.loads(data)
+		merge(rfile,old_file)
+		json.dump(rfile, file, indent=4)
+
+#========================================================================================================================================================================================================#
+
+def get_value(user_id, type_key, key):
+	# getting the value of <user_id> [type_key][key]
+	# user_id, type_key, key should all be string
+	with open(resource_path, 'r') as file:
+		data=file.read()
+		rfile=json.loads(data)
+	return rfile[user_id][type_key][key]
+
+#========================================================================================================================================================================================================#
+
+def modify_value(user_id, type_key, key, value):
+	# modifying the value of <user_id> [type_key][key] by adding value
+	# user_id, type_key, key should all be string
+	# value should be a integer
+	with open(resource_path, 'r') as file:
+		data=file.read()
+		rwfile=json.loads(data)
+	
+	rwfile[user_id][type_key][key] += value
+	
+	with open(resource_path, 'w') as file:
+		json.dump(rwfile, file, indent=4)
+
+
+
+
+
