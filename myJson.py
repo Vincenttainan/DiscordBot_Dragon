@@ -25,13 +25,24 @@ def new_player(user_id):
 		data=file.read()
 		rfile=json.loads(data)
 
-	rfile[user_id] = rfile.pop("IDwwwwwwwwwwwwwwwwwwID")
+	rfile[user_id]=rfile.pop("IDwwwwwwwwwwwwwwwwwwID")
 
-	with open(resource_path, 'r+') as file:
-		old_data=file.read()
-		old_file=json.loads(data)
-		merge(rfile,old_file)
-		json.dump(rfile, file, indent=4)
+	try:
+		with open(resource_path, 'r') as file:
+			old_data=file.read()
+			if old_data:
+				old_file = json.loads(old_data)
+			else:
+				old_file = {}
+
+	except(FileNotFoundError, json.JSONDecodeError):
+		old_file={}
+
+	merge(old_file, rfile)
+
+	with open(resource_path, 'w') as file:
+		json.dump(old_file, file, indent=4)
+
 
 #========================================================================================================================================================================================================#
 
@@ -57,6 +68,9 @@ def modify_value(user_id, type_key, key, value):
 	
 	with open(resource_path, 'w') as file:
 		json.dump(rwfile, file, indent=4)
+
+
+new_player("213456")
 
 
 
