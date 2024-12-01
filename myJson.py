@@ -64,13 +64,19 @@ def modify_value(user_id, type_key, key, value):
 		data=file.read()
 		rwfile=json.loads(data)
 	
-	rwfile[user_id][type_key][key] += value
+	if user_id in rwfile:
+		rwfile[user_id][type_key][key] += value
+	else:
+		new_player(user_id)
+		with open(resource_path, 'r') as file:
+			data=file.read()
+			rwfile=json.loads(data)
+		rwfile[user_id][type_key][key] += value
 	
 	with open(resource_path, 'w') as file:
 		json.dump(rwfile, file, indent=4)
 
 
-new_player("213456")
 
 
 
