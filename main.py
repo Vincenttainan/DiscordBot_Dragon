@@ -1,6 +1,8 @@
 import discord
 import myRand
 import myJson
+import asyncio
+import os
 from discord.ext import commands
 from enum import Enum
 
@@ -14,7 +16,13 @@ bot = commands.Bot(command_prefix = "!030 ", intents = intents)
 @bot.event
 async def on_ready():
     await bot.tree.sync()
-    print(f"now signed in with --> {bot.user}")
+    print(f"now signed in as --> {bot.user}")
+
+
+async def load_extensions():
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            await bot.load_extension(f"cogs.{filename[:-3]}")
 
 #========================================================================================================================================================================================================#
 
@@ -24,7 +32,7 @@ async def hello(ctx):
     await bot.close()
 
 #========================================================================================================================================================================================================#
-
+"""
 class harvest_options(Enum):
     mine = 1
     wood = 2
@@ -153,15 +161,16 @@ async def harvest(ctx, options:harvest_options):
             myJson.modify_value(user_id, "resource", "pufferfish", cnt)
 
         await ctx.response.send_message(embed = embed)
+"""
+#========================================================================================================================================================================================================#
 
+async def main():
+    async with bot:
+        await load_extensions()
+        await bot.start("MTMwNjE5OTAzNTk1NDIwNDY4Mg.Gtulsk.-k96oUchHsS94LIwtm6eelS38XWs3BoyJ5comQ")
 
+#========================================================================================================================================================================================================#
 
+if __name__ == "__main__":
+    asyncio.run(main())
 
-
-
-
-
-
-
-
-bot.run("MTMwNjE5OTAzNTk1NDIwNDY4Mg.Gtulsk.-k96oUchHsS94LIwtm6eelS38XWs3BoyJ5comQ")
