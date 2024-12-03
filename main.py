@@ -37,10 +37,10 @@ green = 0x00ff00
 
 photos = {
     # all of the photos are needed to be redrawed with the size of 320 x 320 (pixels) or maybe 16 x 16 blocks (20 pixels for a block)
-    "coal" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/58/Coal_JE4_BE3.png/revision/latest/thumbnail/width/360/height/360?cb=20230625214010",
-    "gold" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/8/8a/Gold_Ingot_JE4_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20200224211607",
-    "crystal" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/61/Amethyst_Shard_JE2_BE1.png/revision/latest/thumbnail/width/360/height/360?cb=20201111173100",
-    "branch" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7a/Stick_JE1_BE1.png/revision/latest/thumbnail/width/360/height/360?cb=20200128023441",
+    "coal" : "https://i.imgur.com/iqfXcRG.png",
+    "gold" : "https://i.imgur.com/voH559P.png",
+    "crystal" : "https://i.imgur.com/b7u9Olw.png",
+    "branch" : "https://i.imgur.com/YI5VU8G.png",
     "bark" : "https://minecraft.wiki/images/Oak_Log_%28UD%29_JE5_BE3.png?8a080",
     "resin" : "https://minecraft.wiki/images/Resin_Clump_%28item%29_JE1_BE1.png?123f8",
     "beef" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/0f/Raw_Beef_JE4_BE3.png/revision/latest/thumbnail/width/360/height/360?cb=20190504054851",
