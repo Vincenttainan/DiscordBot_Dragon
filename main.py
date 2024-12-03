@@ -40,15 +40,15 @@ photos = {
     "coal" : "https://i.imgur.com/iqfXcRG.png",
     "gold" : "https://i.imgur.com/voH559P.png",
     "crystal" : "https://i.imgur.com/b7u9Olw.png",
-    "branch" : "https://i.imgur.com/YI5VU8G.png",
-    "bark" : "https://minecraft.wiki/images/Oak_Log_%28UD%29_JE5_BE3.png?8a080",
-    "resin" : "https://minecraft.wiki/images/Resin_Clump_%28item%29_JE1_BE1.png?123f8",
-    "beef" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/0f/Raw_Beef_JE4_BE3.png/revision/latest/thumbnail/width/360/height/360?cb=20190504054851",
-    "lamb" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/f3/Raw_Mutton_JE3_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20190504055753",
-    "lizard" : "https://static.wikia.nocookie.net/atmosmobs/images/b/bf/Lizard3.png/revision/latest?cb=20121128105731",
-    "salmon" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/75/Raw_Salmon_JE2_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20191230044441",
-    "cod" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/e/ef/Raw_Cod_JE4_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20190403183136",
-    "pufferfish" : "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/02/Pufferfish_%28item%29_JE5_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20191230044451"
+    "branch" : "https://i.imgur.com/PT7QYZ9.png",
+    "bark" : "https://i.imgur.com/gxowpyc.png",
+    "resin" : "https://i.imgur.com/Ynb5X7M.png",
+    "beef" : "https://i.imgur.com/XklB9eo.png",
+    "lamb" : "https://i.imgur.com/t84sqCd.png",
+    "lizard" : "https://i.imgur.com/3GUUPWe.png",
+    "salmon" : "https://i.imgur.com/BLaYsC7.png",
+    "cod" : "https://i.imgur.com/tnvWUxy.png",
+    "pufferfish" : "https://i.imgur.com/aBZthLA.png"
 
 }
 
