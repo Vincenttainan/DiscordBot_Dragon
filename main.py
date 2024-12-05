@@ -37,7 +37,7 @@ async def load_extensions():
 #========================================================================================================================================================================================================#
 
 @bot.tree.command(name = "sleep", description = "Shut down!!!")
-async def hello(ctx):
+async def sleep(ctx):
     if str(ctx.user.id) in admin:
         await ctx.response.send_message("Sleeping~")
         await bot.close()
@@ -46,29 +46,33 @@ async def hello(ctx):
 
 #========================================================================================================================================================================================================#
 
-@bot.command()
-async def load(ctx, extension):
-    if str(ctx.author.id) in admin:
-        await bot.load_extension(f"cogs.{extension}")
-        await ctx.send(f"Loaded {extension} done.")
-    else:
-        await ctx.send("Go eat yourself")
+class cogs_options(Enum):
+    harvest = "harvest"
+    none = "none"
 
-@bot.command()
-async def unload(ctx, extension):
-    if str(ctx.author.id) in admin:
-        await bot.unload_extension(f"cogs.{extension}")
-        await ctx.send(f"UnLoaded {extension} done.")
+@bot.tree.command(name = "reload", description = "reload a cog")
+async def reload(ctx, options:cogs_options):
+    if str(ctx.user.id) in admin:
+        await bot.reload_extension(f"cogs.{options.name}")
+        await ctx.response.send_message(f"ReLoaded {options.name} done.")
     else:
-        await ctx.send("Go eat yourself")
+        await ctx.response.send_message("Go eat yourself")
 
-@bot.command()
-async def reload(ctx, extension):
-    if str(ctx.author.id) in admin:
-        await bot.reload_extension(f"cogs.{extension}")
-        await ctx.send(f"ReLoaded {extension} done.")
+@bot.tree.command(name = "load", description = "load a cog")
+async def load(ctx, options:cogs_options):
+    if str(ctx.user.id) in admin:
+        await bot.load_extension(f"cogs.{options.name}")
+        await ctx.response.send_message(f"Loaded {options.name} done.")
     else:
-        await ctx.send("Go eat yourself")
+        await ctx.response.send_message("Go eat yourself")
+
+@bot.tree.command(name = "unload", description = "unload a cog")
+async def unload(ctx, options:cogs_options):
+    if str(ctx.user.id) in admin:
+        await bot.unload_extension(f"cogs.{options.name}")
+        await ctx.response.send_message(f"UnLoaded {options.name} done.")
+    else:
+        await ctx.response.send_message("Go eat yourself")
 
 #========================================================================================================================================================================================================#
 
