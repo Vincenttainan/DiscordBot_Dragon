@@ -13,6 +13,14 @@ bot = commands.Bot(command_prefix = "!030 ", intents = intents)
 
 #========================================================================================================================================================================================================#
 
+admin=[
+    "601255055055781891",   #G8
+    "186087112435695617",   #Guo
+    "830075334451003422"    #Vincenttainan
+]
+
+#========================================================================================================================================================================================================#
+
 @bot.event
 async def on_ready():
     try:
@@ -30,24 +38,37 @@ async def load_extensions():
 
 @bot.tree.command(name = "sleep", description = "Shut down!!!")
 async def hello(ctx):
-    await ctx.response.send_message("Sleeping~")
-    await bot.close()
+    if str(ctx.user.id) in admin:
+        await ctx.response.send_message("Sleeping~")
+        await bot.close()
+    else:
+        await ctx.response.send_message("Go eat yourself")
+
 #========================================================================================================================================================================================================#
 
 @bot.command()
 async def load(ctx, extension):
-    await bot.load_extension(f"cogs.{extension}")
-    await ctx.send(f"Loaded {extension} done.")
+    if str(ctx.author.id) in admin:
+        await bot.load_extension(f"cogs.{extension}")
+        await ctx.send(f"Loaded {extension} done.")
+    else:
+        await ctx.send("Go eat yourself")
 
 @bot.command()
 async def unload(ctx, extension):
-    await bot.unload_extension(f"cogs.{extension}")
-    await ctx.send(f"UnLoaded {extension} done.")
+    if str(ctx.author.id) in admin:
+        await bot.unload_extension(f"cogs.{extension}")
+        await ctx.send(f"UnLoaded {extension} done.")
+    else:
+        await ctx.send("Go eat yourself")
 
 @bot.command()
 async def reload(ctx, extension):
-    await bot.reload_extension(f"cogs.{extension}")
-    await ctx.send(f"ReLoaded {extension} done.")
+    if str(ctx.author.id) in admin:
+        await bot.reload_extension(f"cogs.{extension}")
+        await ctx.send(f"ReLoaded {extension} done.")
+    else:
+        await ctx.send("Go eat yourself")
 
 #========================================================================================================================================================================================================#
 
