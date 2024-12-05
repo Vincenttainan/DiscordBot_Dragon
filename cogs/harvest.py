@@ -1,6 +1,10 @@
 import discord
-import myJson from ##
-import myRand from ##
+
+import sys
+sys.path.append('/Users/vincenttainan/Desktop/pythonCSTP')
+
+import myJson
+import myRand
 
 from enum import Enum
 from discord.ext import commands, tasks
@@ -51,7 +55,6 @@ class Harvest(commands.Cog):
 
     @app_commands.command(name = "harvest", description = "Collecting supplies.")
     async def harvest(self, ctx: commands.context, options:harvest_options):
-
         user_id = str(ctx.user.id)
         _rand = myRand.get_rand(1, 100)
 
