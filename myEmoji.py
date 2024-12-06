@@ -1,5 +1,5 @@
-import discord #type: ignore
-from discord import PartialEmoji #type: ignore
+import discord
+from discord import PartialEmoji
 
 emoji_list = {
     "coal": PartialEmoji.from_str("<:coal:1314484176765980722>"),
