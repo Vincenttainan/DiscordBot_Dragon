@@ -20,7 +20,8 @@ green = 0x00ff00
 
 photos = {
     # all of the photos are needed to be redrawed with the size of 320 x 320 (pixels) or maybe 16 x 16 blocks (20 pixels for a block)
-    "bag" : "https://i.imgur.com/RSKeSAD.png"
+    "bag" : "https://i.imgur.com/RSKeSAD.png",
+    "info" : "https://i.imgur.com/xSjqIZT.png"
 }
 
 
@@ -85,7 +86,7 @@ class Info(commands.Cog):
                 color = green
             )
 
-        embed.set_thumbnail(url = photos["bag"])
+        embed.set_thumbnail(url = photos["info"])
 
         embed.add_field(name = "Stamina", value = "", inline=False)
         embed.add_field(name = "", value = "Your stamina : `"+str(myJson.get_value(user_id,"stamina","now_stamina"))+"` / "+str(myJson.get_value(user_id,"stamina","max_stamina")), inline=True)
