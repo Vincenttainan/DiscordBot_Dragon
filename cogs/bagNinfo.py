@@ -5,6 +5,7 @@ sys.path.append('/Users/vincenttainan/Desktop/pythonCSTP')
 
 import myJson
 import myRand
+import myEmoji
 
 from enum import Enum
 from discord.ext import commands, tasks
@@ -45,24 +46,24 @@ class Bag(commands.Cog):
         embed.set_thumbnail(url = photos["bag"])
 
         embed.add_field(name = "Mine", value = "", inline=False)
-        embed.add_field(name = "", value = "Coal : `"+str(myJson.get_value(user_id,"resource","coal"))+"`", inline=True)
-        embed.add_field(name = "", value = "Gold : `"+str(myJson.get_value(user_id,"resource","gold"))+"`", inline=True)
-        embed.add_field(name = "", value = "Crystal : `"+str(myJson.get_value(user_id,"resource","crystal"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["coal"]), value = "Coal : `"+str(myJson.get_value(user_id,"resource","coal"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["gold"]), value = "Gold : `"+str(myJson.get_value(user_id,"resource","gold"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["crystal"]), value = "Crystal : `"+str(myJson.get_value(user_id,"resource","crystal"))+"`", inline=True)
 
         embed.add_field(name = "Wood", value = "", inline=False)
-        embed.add_field(name = "", value = "Branch : `"+str(myJson.get_value(user_id,"resource","branch"))+"`", inline=True)
-        embed.add_field(name = "", value = "Bark : `"+str(myJson.get_value(user_id,"resource","bark"))+"`", inline=True)
-        embed.add_field(name = "", value = "Resin : `"+str(myJson.get_value(user_id,"resource","resin"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["branch"]), value = "Branch : `"+str(myJson.get_value(user_id,"resource","branch"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["bark"]), value = "Bark : `"+str(myJson.get_value(user_id,"resource","bark"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["resin"]), value = "Resin : `"+str(myJson.get_value(user_id,"resource","resin"))+"`", inline=True)
 
         embed.add_field(name = "Farm", value = "", inline=False)
-        embed.add_field(name = "", value = "Beef : `"+str(myJson.get_value(user_id,"resource","beef"))+"`", inline=True)
-        embed.add_field(name = "", value = "Lamb : `"+str(myJson.get_value(user_id,"resource","lamb"))+"`", inline=True)
-        embed.add_field(name = "", value = "Lizard : `"+str(myJson.get_value(user_id,"resource","lizard"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["beef"]), value = "Beef : `"+str(myJson.get_value(user_id,"resource","beef"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["lamb"]), value = "Lamb : `"+str(myJson.get_value(user_id,"resource","lamb"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["lizard"]), value = "Lizard : `"+str(myJson.get_value(user_id,"resource","lizard"))+"`", inline=True)
 
         embed.add_field(name = "Fish", value = "", inline=False)
-        embed.add_field(name = "", value = "Salmon : `"+str(myJson.get_value(user_id,"resource","salmon"))+"`", inline=True)
-        embed.add_field(name = "", value = "Cod : `"+str(myJson.get_value(user_id,"resource","cod"))+"`", inline=True)
-        embed.add_field(name = "", value = "Pufferfish : `"+str(myJson.get_value(user_id,"resource","pufferfish"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["salmon"]), value = "Salmon : `"+str(myJson.get_value(user_id,"resource","salmon"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["cod"]), value = "Cod : `"+str(myJson.get_value(user_id,"resource","cod"))+"`", inline=True)
+        embed.add_field(name = str(myEmoji.emoji_list["pufferfish"]), value = "Pufferfish : `"+str(myJson.get_value(user_id,"resource","pufferfish"))+"`", inline=True)
 
         await ctx.response.send_message(embed = embed)
 
