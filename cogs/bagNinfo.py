@@ -68,8 +68,38 @@ class Bag(commands.Cog):
         await ctx.response.send_message(embed = embed)
 
 
+class Info(commands.Cog):
+    def __init__(self, bot: commands.Bot):
+        self.bot = bot
+
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print("Info Module Ready.")
+
+    @app_commands.command(name = "info", description = "Check your infomations.")
+    async def info(self, ctx: commands.context):
+        user_id = str(ctx.user.id)
+
+        embed = discord.Embed(
+                title = "<@"+user_id+"> 's infomations", 
+                color = green
+            )
+
+        embed.set_thumbnail(url = photos["bag"])
+
+        embed.add_field(name = "Stamina", value = "", inline=False)
+        embed.add_field(name = "", value = "Your stamina : `"+str(myJson.get_value(user_id,"stamina","now_stamina"))+"` / "+str(myJson.get_value(user_id,"stamina","max_stamina")), inline=True)
+
+        embed.add_field(name = "Currency", value = "", inline=False)
+        embed.add_field(name = "", value = "Emerald : `"+str(myJson.get_value(user_id,"currency","emerald"))+"`", inline=True)
+        embed.add_field(name = "", value = "Ruby : `"+str(myJson.get_value(user_id,"currency","ruby"))+"`", inline=True)
+
+        await ctx.response.send_message(embed = embed)
+
+
 
 
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Bag(bot))
+    await bot.add_cog(Info(bot))
