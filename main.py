@@ -49,7 +49,7 @@ async def sleep(ctx):
 
 class cogs_options(Enum):
     harvest = "harvest"
-    none = "none"
+    bagNinfo = "bagNinfo"
 
 @bot.tree.command(name = "reload", description = "reload a cog")
 async def reload(ctx, options:cogs_options):
