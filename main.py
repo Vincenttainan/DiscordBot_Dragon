@@ -1,6 +1,7 @@
 import discord
 import myRand
 import myJson
+import myEmoji
 import asyncio
 import os
 from discord.ext import commands
