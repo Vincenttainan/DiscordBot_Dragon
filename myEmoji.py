@@ -14,5 +14,5 @@ emoji_list = {
     "salmon": PartialEmoji.from_str("<:salmon:1314484315433730090>"),
     "cod": PartialEmoji.from_str("<:cod:1314484332488032257>"),
     "pufferfish": PartialEmoji.from_str("<:pufferfish:1314484343699406868>"),
-    "bag": PartialEmoji.from_str("<:bag:1314484354768044105>"),
+    "bag": PartialEmoji.from_str("<:bag:1314484354768044105>")
 }
