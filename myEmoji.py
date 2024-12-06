@@ -1,5 +1,5 @@
-import discord
-from discord import PartialEmoji
+import discord #type: ignore
+from discord import PartialEmoji #type: ignore
 
 emoji_list = {
     "coal": PartialEmoji.from_str("<:coal:1314484176765980722>"),
@@ -14,5 +14,9 @@ emoji_list = {
     "salmon": PartialEmoji.from_str("<:salmon:1314484315433730090>"),
     "cod": PartialEmoji.from_str("<:cod:1314484332488032257>"),
     "pufferfish": PartialEmoji.from_str("<:pufferfish:1314484343699406868>"),
-    "bag": PartialEmoji.from_str("<:bag:1314484354768044105>")
+    "bag": PartialEmoji.from_str("<:bag:1314484354768044105>"),
+    "info": PartialEmoji.from_str("<:info:1314526877787885578>"),
+    "emerald": PartialEmoji.from_str("<:emerald:1314526889913876502>"),
+    "ruby": PartialEmoji.from_str("<:ruby:1314526899590135868>"),
+    "stamina": PartialEmoji.from_str("<:stamina:1314526908687450173>")
 }
