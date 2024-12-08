@@ -21,9 +21,8 @@ green = 0x00ff00
 photos = {
     # all of the photos are needed to be redrawed with the size of 320 x 320 (pixels) or maybe 16 x 16 blocks (20 pixels for a block)
     "bag" : "https://i.imgur.com/RSKeSAD.png",
-    "info" : "https://i.imgur.com/xSjqIZT.png"
+    "info" : "https://i.imgur.com/nxLJy6N.png"
 }
-
 
 #========================================================================================================================================================================================================#
 
@@ -68,6 +67,7 @@ class Bag(commands.Cog):
 
         await ctx.response.send_message(embed = embed)
 
+#========================================================================================================================================================================================================#
 
 class Info(commands.Cog):
     def __init__(self, bot: commands.Bot):
