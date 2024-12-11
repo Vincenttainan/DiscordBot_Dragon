@@ -7,7 +7,7 @@ curr_path = "/Users/vincenttainan/Desktop/pythonCSTP"
 ex_path = "./jsons/ex_player.json"
 resource_path = "./resource/player.json"
 os.chdir(curr_path)
-# Since the abs path is greater the 3 layers, path should be written down
+# Since the abs path is greater than 3 layers, path should be written down
 
 #========================================================================================================================================================================================================#
 
