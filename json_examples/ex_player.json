@@ -10,17 +10,17 @@
 		},
 		"resource": {
 			"bark": 0,
-	        "beef": 0,
-	        "branch": 0,
-	        "coal": 0,
-	        "cod": 0,
-	        "crystal": 0,
-	        "gold": 0,
-	        "lamb": 0,
-	        "lizard": 0,
-	        "pufferfish": 0,
-	        "resin": 0,
-	        "salmon": 0
+	        	"beef": 0,
+	        	"branch": 0,
+	        	"coal": 0,
+	        	"cod": 0,
+	        	"crystal": 0,
+	        	"gold": 0,
+	        	"lamb": 0,
+	        	"lizard": 0,
+	        	"pufferfish": 0,
+	        	"resin": 0,
+	        	"salmon": 0
 		}
 	}
 }
