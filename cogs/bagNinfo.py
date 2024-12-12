@@ -37,9 +37,10 @@ class Bag(commands.Cog):
     @app_commands.command(name = "bag", description = "Seeking items in your bag.")
     async def bag(self, ctx: commands.context):
         user_id = str(ctx.user.id)
+        user_name = str(ctx.user.name)
         
         embed = discord.Embed(
-            title = "<@"+user_id+"> 's bag", 
+            title = user_name + "'s bag", 
             color = green
         )
 
@@ -80,9 +81,10 @@ class Info(commands.Cog):
     @app_commands.command(name = "info", description = "Check your infomations.")
     async def info(self, ctx: commands.context):
         user_id = str(ctx.user.id)
+        user_name = str(ctx.user.name)
 
         embed = discord.Embed(
-                title = "<@"+user_id+"> 's infomations", 
+                title = user_name + "'s infomations", 
                 color = green
             )
 
