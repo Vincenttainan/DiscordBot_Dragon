@@ -5,7 +5,7 @@ import os
 
 curr_path = "/Users/vincenttainan/Desktop/pythonCSTP"
 ex_path = "./jsons/ex_player.json"
-resource_path = "./resource/player.json"
+list_path = "./resource/player_list.json"
 os.chdir(curr_path)
 # Since the abs path is greater than 3 layers, path should be written down
 
@@ -19,89 +19,87 @@ def merge(json1, json2):
 #========================================================================================================================================================================================================#
 
 def new_player(user_id):
-    # adding a new player into resource
+    # adding a new player into list & adding a new player_info file
     # user_id should be a string
     with open(ex_path, 'r') as file:
         data=file.read()
         rfile=json.loads(data)
-
-    rfile[user_id]=rfile.pop("IDwwwwwwwwwwwwwwwwwwID")
-
+    
     try:
-        with open(resource_path, 'r') as file:
-            old_data=file.read()
-            if old_data:
-                old_file = json.loads(old_data)
-            else:
-                old_file = {}
+        with open(list_path, 'r') as file:
+            data = file.read()
+            player_list = json.loads(data)
+    
+    except (FileNotFoundError, json.JSONDecodeError):
+        player_list = {"user": []}
 
-    except(FileNotFoundError, json.JSONDecodeError):
-        old_file={}
+    if user_id not in player_list["user"]:
+        player_list["user"].append(user_id)
+        with open(list_path, 'w') as profile:
+            json.dump(player_list, profile, indent=4)
 
-    merge(old_file, rfile)
-
-    with open(resource_path, 'w') as file:
-        json.dump(old_file, file, indent=4)
-
+    if not os.path.isfile(f"./resource/{user_id}.json"):
+        with open(f"./resource/{user_id}.json", 'w') as profile:
+            json.dump(rfile, profile, indent=4)    
 
 #========================================================================================================================================================================================================#
 
 def get_value(user_id, type_key, key):
     # Getting the value of <user_id> [type_key][key]
     # user_id, type_key, key should all be strings
-    with open(resource_path, 'r') as file:
-        data = file.read()
-        try:
-            rfile = json.loads(data)
-        except json.JSONDecodeError:
-            rfile = {}
-
-    if user_id not in rfile:
+    if not os.path.isfile(f"./resource/{user_id}.json"):
         new_player(user_id)
-        with open(resource_path, 'r') as file:
-            data = file.read()
-            rfile = json.loads(data)
+        
+    with open(f"./resource/{user_id}.json", 'r') as file:
+        data = file.read()
 
-    return rfile[user_id][type_key][key]
+    rfile = json.loads(data)
+
+    return rfile[type_key][key]
 
 #========================================================================================================================================================================================================#
 
 def modify_value(user_id, type_key, key, value):
+    # !!! there's no method to prevent resource or else from dropping below zero !!!
     # modifying the value of <user_id> [type_key][key] by adding value
     # user_id, type_key, key should all be string
     # value should be a integer
-    with open(resource_path, 'r') as file:
-        data=file.read()
-        rwfile=json.loads(data)
-    
-    if user_id not in rwfile:
+    if not os.path.isfile(f"./resource/{user_id}.json"):
         new_player(user_id)
-        with open(resource_path, 'r') as file:
-            data=file.read()
-            rwfile=json.loads(data)
+        
+    with open(f"./resource/{user_id}.json", 'r') as file:
+        data = file.read()
+
+    rwfile = json.loads(data)
     
-    rwfile[user_id][type_key][key] += value
+    rwfile[type_key][key] += value
     
-    with open(resource_path, 'w') as file:
+    with open(f"./resource/{user_id}.json", 'w') as file:
         json.dump(rwfile, file, indent=4)
 
 #========================================================================================================================================================================================================#
 
 def update_all_stamina():
-    with open(resource_path, 'r') as file:
+    # restore each player's stamina by 1
+    # !!! if someone's name is not in the list, then he cannot get the update !!!
+    with open(list_path, 'r') as file:
         data=file.read()
-        rwfile=json.loads(data)
+        player_list=json.loads(data)
 
-    for user_id, details in rwfile.items():
-        if "stamina" in details:
-            current_stamina = details["stamina"].get("now_stamina", 0)
-            max_stamina = details["stamina"].get("max_stamina", 20)
-            if current_stamina < max_stamina:
-                details["stamina"]["now_stamina"] = min(current_stamina + 1, max_stamina)
+    for user_id in player_list["user"]:
+        if not os.path.isfile(f"./resource/{user_id}.json"):
+            new_player(user_id)
 
-    with open(resource_path, 'w') as file:
-        json.dump(rwfile, file, indent=4)
+        with open(f"./resource/{user_id}.json", 'r') as file:
+            data = file.read()
 
+        rwfile = json.loads(data)
 
+        current_stamina = rwfile["stamina"].get("now_stamina", 0)
+        max_stamina = rwfile["stamina"].get("max_stamina", 20)
+        
+        if current_stamina < max_stamina:
+                rwfile["stamina"]["now_stamina"] += 1
 
-
+        with open(f"./resource/{user_id}.json", 'w') as file:
+            json.dump(rwfile, file, indent=4)
