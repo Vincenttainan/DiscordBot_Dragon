@@ -36,11 +36,11 @@ def new_player(user_id):
     if user_id not in player_list["user"]:
         player_list["user"].append(user_id)
         with open(list_path, 'w') as profile:
-            json.dump(player_list, profile, indent=4)
+            json.dump(player_list, profile, indent='\t')
 
     if not os.path.isfile(f"./resource/{user_id}.json"):
         with open(f"./resource/{user_id}.json", 'w') as profile:
-            json.dump(rfile, profile, indent=4)    
+            json.dump(rfile, profile, indent='\t')    
 
 #========================================================================================================================================================================================================#
 
@@ -75,7 +75,7 @@ def modify_value(user_id, type_key, key, value):
     rwfile[type_key][key] += value
     
     with open(f"./resource/{user_id}.json", 'w') as file:
-        json.dump(rwfile, file, indent=4)
+        json.dump(rwfile, file, indent='\t')
 
 #========================================================================================================================================================================================================#
 
@@ -102,4 +102,4 @@ def update_all_stamina():
                 rwfile["stamina"]["now_stamina"] += 1
 
         with open(f"./resource/{user_id}.json", 'w') as file:
-            json.dump(rwfile, file, indent=4)
+            json.dump(rwfile, file, indent='\t')
