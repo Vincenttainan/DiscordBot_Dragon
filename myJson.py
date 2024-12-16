@@ -77,6 +77,8 @@ def modify_value(user_id, type_key, key, value):
     with open(f"./resource/{user_id}.json", 'w') as file:
         json.dump(rwfile, file, indent='\t')
 
+    return rwfile[type_key][key]
+
 #========================================================================================================================================================================================================#
 
 def update_all_stamina():
