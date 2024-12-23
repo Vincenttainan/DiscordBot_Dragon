@@ -6,6 +6,7 @@ import os
 curr_path = "/Users/vincenttainan/Desktop/pythonCSTP"
 ex_path = "./jsons/ex_player.json"
 list_path = "./resource/player_list.json"
+dialogue_path = "./cogs/dialogue.json"
 os.chdir(curr_path)
 # Since the abs path is greater than 3 layers, path should be written down
 
