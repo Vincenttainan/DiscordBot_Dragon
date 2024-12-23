@@ -58,7 +58,6 @@ class Harvest(commands.Cog):
             resources = list(info["resources"].keys())
             
             choosen = myRand.set_chance(weight=weight, options=resources)
-            choosen = choosen[0]
 
             info = info["resources"][choosen]
 
