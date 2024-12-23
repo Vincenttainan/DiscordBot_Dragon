@@ -1,4 +1,4 @@
-import discord #type: ignore
+import discord
 
 import sys
 sys.path.append('/Users/vincenttainan/Desktop/pythonCSTP')
@@ -7,8 +7,8 @@ import myJson
 import myRand
 
 from enum import Enum
-from discord.ext import commands, tasks #type: ignore
-from discord import app_commands #type: ignore
+from discord.ext import commands, tasks
+from discord import app_commands
 
 #========================================================================================================================================================================================================#
 
