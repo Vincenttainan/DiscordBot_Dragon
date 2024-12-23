@@ -18,7 +18,7 @@ def merge(json1, json2):
 
 #========================================================================================================================================================================================================#
 
-def new_player(user_id):
+def new_player(user_id: str):
     # adding a new player into list & adding a new player_info file
     # user_id should be a string
     with open(ex_path, 'r') as file:
@@ -44,7 +44,7 @@ def new_player(user_id):
 
 #========================================================================================================================================================================================================#
 
-def get_value(user_id, type_key, key):
+def get_value(user_id: str, type_key: str, key: str):
     # Getting the value of <user_id> [type_key][key]
     # user_id, type_key, key should all be strings
     if not os.path.isfile(f"./resource/{user_id}.json"):
@@ -59,7 +59,7 @@ def get_value(user_id, type_key, key):
 
 #========================================================================================================================================================================================================#
 
-def modify_value(user_id, type_key, key, value):
+def modify_value(user_id: str, type_key: str, key: str, value: int):
     # !!! there's no method to prevent resource or else from dropping below zero !!!
     # modifying the value of <user_id> [type_key][key] by adding value
     # user_id, type_key, key should all be string
@@ -105,3 +105,13 @@ def update_all_stamina():
 
         with open(f"./resource/{user_id}.json", 'w') as file:
             json.dump(rwfile, file, indent='\t')
+
+#========================================================================================================================================================================================================#
+
+def get_dialogue(category: str):
+    # let program get the dialogue already written in file
+    with open(dialogue_path, 'r') as file:
+        data = file.read()
+    data = json.loads(data)
+
+    return data[category]
